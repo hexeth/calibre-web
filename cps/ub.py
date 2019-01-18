@@ -259,7 +259,7 @@ class Downloads(Base):
     def __repr__(self):
         return '<Download %r' % self.book_id
 
-        
+
 # Baseclass representing allowed domains for registration
 class Registration(Base):
     __tablename__ = 'registration'
@@ -313,6 +313,7 @@ class Settings(Base):
     config_calibre = Column(String)
     config_rarfile_location = Column(String)
     config_theme = Column(Integer, default=0)
+    config_reader_theme = Column(Integer, default=0)
 
     def __repr__(self):
         pass
