@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/libs/normalize.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
+	{% if g.current_reader_theme == 1 %}
+        <link href="{{ url_for('static', filename='css/dark_reader.css') }}" rel="stylesheet" media="screen">
+    {% endif %}
     </head>
     <body>
       <div id="sidebar">
