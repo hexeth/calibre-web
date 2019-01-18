@@ -388,7 +388,7 @@ class Config:
             self.config_logfile = data.config_logfile
         self.config_rarfile_location = data.config_rarfile_location
         self.config_theme = data.config_theme
-
+        self.config_reader_theme = data.config_reader_theme
     @property
     def get_main_dir(self):
         return self.config_main_dir
@@ -668,7 +668,12 @@ def migrate_Database():
         conn = engine.connect()
         conn.execute("ALTER TABLE Settings ADD column `config_theme` INTEGER DEFAULT 0")
         session.commit()
-
+    try:
+        session.query(exists().where(Settings.config_reader_theme)).scalar()
+    except exc.OperationalError:  # Database is not compatible, some rows are missing
+        conn = engine.connect()
+        conn.execute("ALTER TABLE Settings ADD column `config_reader_theme` INTEGER DEFAULT 0")
+        session.commit()
 
     # Remove login capability of user Guest
     conn = engine.connect()
