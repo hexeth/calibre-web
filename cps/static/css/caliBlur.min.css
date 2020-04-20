@@ -6035,10 +6035,12 @@ body.authorlist .blur-wrapper:after {
   width: 180px!important;
   max-width: 180px!important;
   min-width: 180px!important;
+  min-height: auto;
   height: 295px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
 }
 
 #books .cover img,
